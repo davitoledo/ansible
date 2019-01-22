@@ -1,0 +1,9 @@
+
+- name: criando usuario padrao
+  user: 
+   name: "{{item}}"
+   shell: /bin/bash
+  with_items:
+    - developer
+    - suporte
+    - "{{meunome}}"

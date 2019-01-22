@@ -1,0 +1,7 @@
+- name: instala pacote
+  package:
+   name: "{{item.nome}}"
+   
+   when: ansible_os_family == "Debian" 
+    - { nome: apache2
+   

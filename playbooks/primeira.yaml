@@ -1,0 +1,9 @@
+- name: minha primeira playbok
+  hosts: all
+  tasks: 
+   - name: criando um usuario
+     user:
+      name: devops
+      password: '$1$PSi22rih$HxxsAkl78DbXHjxMguckB.' 
+      shell: /bin/bash
+     

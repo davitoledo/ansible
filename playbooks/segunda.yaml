@@ -1,0 +1,16 @@
+- name: minha segunda playbok
+  hosts: docker devops
+  vars:
+    username: null 
+    pacote: null
+
+  tasks: 
+    - name: adicionando um usuario
+      user:
+       name: "{{ username }}"
+       shell: /bin/bash
+
+    - name: instalando pacote
+      apt: 
+       name: "{{ pacote }}"
+       state: present

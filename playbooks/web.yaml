@@ -1,0 +1,4 @@
+- name: prove site
+  hosts: all
+  roles: 
+   - web

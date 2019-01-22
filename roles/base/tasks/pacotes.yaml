@@ -1,0 +1,7 @@
+- name: instalar pacotes base
+  package:
+   name: 
+    - vim
+    - wget
+    - htop
+

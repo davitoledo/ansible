@@ -1,0 +1,40 @@
+- name: tarefa da aula
+  hosts: all
+  tasks: 
+    - name: criar usuarios
+      user:
+        name: "{{item.nome}}" 
+        shell: "{{item.base}}"
+      with_items:
+       - { nome: toledo, base: "/bin/bash" }
+       - { nome: developer, base: "/bin/bash" }
+       - { nome: suporte, base: "/bin/bash" }
+
+    - name: adicionar pacotes
+      package: 
+       name: "{{item.pacote}}"
+      when: ansible_os_family == item.distro
+      with_items: 
+       - { pacote: epel-release, distro: RedHat }
+       - { pacote: git, distro: RedHat }
+       - { pacote: vim, distro: RedHat }
+       - { pacote: vim, distro: Debian }
+       - { pacote: git, distro: Debian } 
+       - { pacote: figlet, distro: Debian }
+
+    - name: criar diretório 
+      file:
+       path: "{{item.arquivo}}" 
+       state: directory
+      with_items:
+        - { arquivo: /tmp/infraagil, tipo: directory }
+#        - { arquivo: /tmp/infraagil/devops, tipo: touch }
+
+    - name: colocar conteudo
+      blockinfile:
+        create: yes
+        path: /tmp/infraagil/file
+        block: | 
+         sou devops
+         na 4Linux
+         com um bloco de conteudo
